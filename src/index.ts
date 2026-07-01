@@ -23,7 +23,8 @@ export function estaEnRoster(roster: number[], id: number): boolean {
 }
 
 export function agregarAlRoster(roster: number[], id: number): number[] {
-  let nuevoRoster: number[] = []; // COMPLETAR
+  let nuevoRoster: number[] = [];
+   // COMPLETAR
   return nuevoRoster;
 }
 
