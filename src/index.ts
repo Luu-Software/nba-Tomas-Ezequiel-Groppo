@@ -6,17 +6,18 @@ let roster: number[] = [];
 
 export function estaEnRoster(roster: number[], id: number): boolean {
    let n: number=0;
-   let m: number=roster.length
-   let esta:boolean;
+   let esta:boolean=false;
    while (n<roster.length){
+    
+    if (roster[n]===id){
+      esta=true
+    }
+    else{
+      esta=false
+    }
       n++;
    }
-   if (m=n){
-    esta=true
-   }
-   else{
-    esta=false
-   }
+   
   
   return esta;
 }
