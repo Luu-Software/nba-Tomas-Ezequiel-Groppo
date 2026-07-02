@@ -24,12 +24,43 @@ export function estaEnRoster(roster: number[], id: number): boolean {
 
 export function agregarAlRoster(roster: number[], id: number): number[] {
   let nuevoRoster: number[] = [];
+  if (roster.length<5){
+  nuevoRoster=roster;
+  nuevoRoster.push(id);
+  }
+  else{
+    nuevoRoster=roster;
+  }
    // COMPLETAR
   return nuevoRoster;
 }
 
 export function quitarDelRoster(roster: number[], id: number): number[] {
-  let nuevoRoster: number[] = []; // COMPLETAR
+  let nuevoRoster: number[] = []; 
+  let n: number = 0;
+  let restantes: number[]=[];
+  let m:number=5
+  let x:number=0;
+   if (roster.length>0){
+    while (n<roster.length){
+      if (nuevoRoster[n] !== id){
+        restantes.push(nuevoRoster[m])
+        nuevoRoster.pop
+        m=m-1;
+      }
+      else{
+        nuevoRoster.pop 
+      }
+      n++;
+    }
+    while (x<m){
+      nuevoRoster.push(restantes[x]);
+    }
+   }
+   else{
+     nuevoRoster=nuevoRoster;
+   }
+  // COMPLETAR
   return nuevoRoster;
 }
 
