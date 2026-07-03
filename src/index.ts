@@ -31,7 +31,7 @@ export function agregarAlRoster(roster: number[], id: number): number[] {
   else{
     nuevoRoster=roster;
   }
-   // COMPLETAR
+   
   return nuevoRoster;
 }
 
@@ -40,10 +40,11 @@ export function quitarDelRoster(roster: number[], id: number): number[] {
   let n: number = 0;
   let restantes: number[]=[];
   let m:number=5
-  let x:number=0;
-   if (roster.length>0){
-    while (n<roster.length){
-      if (nuevoRoster[n] !== id){
+  nuevoRoster=roster
+  
+   if (nuevoRoster.length>0){
+    while (0<nuevoRoster.length){
+      if (nuevoRoster[m] !== id){
         restantes.push(nuevoRoster[m])
         nuevoRoster.pop
         m=m-1;
@@ -51,10 +52,11 @@ export function quitarDelRoster(roster: number[], id: number): number[] {
       else{
         nuevoRoster.pop 
       }
-      n++;
+      
     }
-    while (x<m){
-      nuevoRoster.push(restantes[x]);
+    while (n<m){
+      nuevoRoster.push(restantes[n]);
+      n++;
     }
    }
    else{
