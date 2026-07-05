@@ -4,14 +4,14 @@ import { cargarJugadores, obtenerDato, obtenerJugadoresPorIds } from './lib/juga
 const ids: number[] = cargarJugadores();
 let roster: number[] = [];
 
-export function filtrarPorPosicion(jugadores: number[], position: string): number[] {
+export function filtrarPorPosicion(jugadores: number[], posicion: string): number[] {
   let idsFiltrados: number[] = [];
   idsFiltrados=jugadores
   idsFiltrados=cargarJugadores()
   let filtrados: number [] = [];
-      if (position!==""){
+      if (posicion!==""){
 
-       if (position==="G"){
+       if (posicion==="G"){
        while(idsFiltrados.length>0){
         let n: number=idsFiltrados.length-1;
          if(obtenerDato(idsFiltrados[n], "posicion")==="G" || obtenerDato(idsFiltrados[n], "posicion")==="G-F" || obtenerDato(idsFiltrados[n], "posicion")==="F-G"){
@@ -23,7 +23,7 @@ export function filtrarPorPosicion(jugadores: number[], position: string): numbe
          }
        }
        }
-        else if(position==="F"){
+        else if(posicion==="F"){
 
           while(idsFiltrados.length>0){
         let n: number=idsFiltrados.length-1;
@@ -36,7 +36,7 @@ export function filtrarPorPosicion(jugadores: number[], position: string): numbe
          }
        }
         }
-        else if(position=="C"){
+        else if(posicion=="C"){
 
           while(idsFiltrados.length>0){
         let n: number=idsFiltrados.length-1;
