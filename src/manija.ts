@@ -4,8 +4,62 @@ import { cargarJugadores, obtenerDato, obtenerJugadoresPorIds } from './lib/juga
 const ids: number[] = cargarJugadores();
 let roster: number[] = [];
 
-export function filtrarPorPosicion(jugadores: number[], posicion: string): number[] {
-  let idsFiltrados: number[] = []; // COMPLETAR
+export function filtrarPorPosicion(jugadores: number[], position: string): number[] {
+  let idsFiltrados: number[] = [];
+  idsFiltrados=jugadores
+  idsFiltrados=cargarJugadores()
+  let filtrados: number [] = [];
+      if (position!==""){
+
+       if (position==="G"){
+       while(idsFiltrados.length>0){
+        let n: number=idsFiltrados.length-1;
+         if(obtenerDato(idsFiltrados[n], "posicion")==="G" || obtenerDato(idsFiltrados[n], "posicion")==="G-F" || obtenerDato(idsFiltrados[n], "posicion")==="F-G"){
+          filtrados.push(idsFiltrados[n]);
+          idsFiltrados.pop();
+         }
+         else{
+          idsFiltrados.pop();
+         }
+       }
+       }
+        else if(position==="F"){
+
+          while(idsFiltrados.length>0){
+        let n: number=idsFiltrados.length-1;
+         if(obtenerDato(idsFiltrados[n],"posicion")==="F" || obtenerDato(idsFiltrados[n],"posicion")==="F-G" || obtenerDato(idsFiltrados[n],"posicion")==="G-F" || obtenerDato(idsFiltrados[n],"posicion")==="F-C" || obtenerDato(idsFiltrados[n],"posicion")==="C-F"){
+          filtrados.push(idsFiltrados[n]);
+          idsFiltrados.pop();
+         }
+         else{
+          idsFiltrados.pop();
+         }
+       }
+        }
+        else if(position=="C"){
+
+          while(idsFiltrados.length>0){
+        let n: number=idsFiltrados.length-1;
+         if(obtenerDato(idsFiltrados[n],"posicion")==="C" || obtenerDato(idsFiltrados[n],"posicion")==="F-C" || obtenerDato(idsFiltrados[n],"posicion")==="C-F"){
+          filtrados.push(idsFiltrados[n]);
+          idsFiltrados.pop();
+         }
+         else{
+          idsFiltrados.pop();
+         }
+       }
+
+        }
+        while(filtrados.length>0){
+          let m: number=filtrados.length-1
+          idsFiltrados.push(filtrados[m])
+          filtrados.pop()
+        }
+      }
+      else{
+        idsFiltrados=cargarJugadores()
+      
+  }
   return idsFiltrados;
 }
 
