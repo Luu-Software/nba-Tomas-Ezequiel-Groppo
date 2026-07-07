@@ -64,7 +64,52 @@ export function filtrarPorPosicion(jugadores: number[], posicion: string): numbe
 }
 
 export function obtenerMejorJugador(jugadores: number[], caracteristica: string): number {
-  let mejorId: number = -1; // COMPLETAR
+  let mejorId: number = -1;
+  let m: number =1000;
+  let n: number= 0;
+  let ids: number [ ]= jugadores;
+  const original: number [] = jugadores;
+  
+  while (0<original.length){
+    if (caracteristica==="pts"){
+    while (n<ids.length){
+      if (m===Number(obtenerDato(ids[n], "pts"))){
+        mejorId=ids[n]
+      }
+      else{
+        ids.pop()
+      }
+      n++;
+    }
+  }
+  else if (caracteristica==="reb"){
+    while (n<ids.length){
+      if (m===Number(obtenerDato(ids[n], "reb"))){
+        mejorId=ids[n]
+      }
+      else{
+        ids.pop()
+      }
+    }
+    n++;
+  }
+  else if (caracteristica==="ast"){
+    while (n<ids.length){
+      if (m===Number(obtenerDato(ids[n], "ast"))){
+        mejorId=ids[n]
+      }
+      else{
+        ids.pop()
+      }
+    }
+  }
+  else{
+    mejorId=-1
+  }
+  m=m-0.1
+}
+    
+ 
   return mejorId;
 }
 
