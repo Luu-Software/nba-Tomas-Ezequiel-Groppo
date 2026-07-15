@@ -65,51 +65,49 @@ export function filtrarPorPosicion(jugadores: number[], posicion: string): numbe
 
 export function obtenerMejorJugador(jugadores: number[], caracteristica: string): number {
   let mejorId: number = -1;
-  let m: number =1000;
-  let n: number= 0;
-  let ids: number [ ]= jugadores;
-  const original: number [] = jugadores;
-  
-  while (0<original.length){
-    if (caracteristica==="pts"){
-    while (n<ids.length){
-      if (m===Number(obtenerDato(ids[n], "pts"))){
-        mejorId=ids[n]
+  let n: number[] = jugadores
+  n=cargarJugadores()
+  let m: number=1;
+  let bestID: number[]=[];
+  bestID.push(n[0]);
+  if (caracteristica==="pts"){
+while(m<n.length){
+      if (obtenerDato(n[m], "pts")>obtenerDato(bestID[0],"pts")){
+        bestID.pop();
+        bestID.push(n[m]);
       }
       else{
-        ids.pop()
+        bestID=bestID;
       }
-      n++;
-    }
+      m++;
+  }
   }
   else if (caracteristica==="reb"){
-    while (n<ids.length){
-      if (m===Number(obtenerDato(ids[n], "reb"))){
-        mejorId=ids[n]
+while(m<n.length){
+      if (obtenerDato(n[m], "reb")>obtenerDato(bestID[0],"reb")){
+        bestID.pop();
+        bestID.push(n[m]);
       }
       else{
-        ids.pop()
+        bestID=bestID;
       }
-    }
-    n++;
+      m++;
   }
-  else if (caracteristica==="ast"){
-    while (n<ids.length){
-      if (m===Number(obtenerDato(ids[n], "ast"))){
-        mejorId=ids[n]
+  }
+ else if (caracteristica==="ast"){
+while(m<n.length){
+      if (obtenerDato(n[m], "ast")>obtenerDato(bestID[0],"ast")){
+        bestID.pop();
+        bestID.push(n[m]);
       }
       else{
-        ids.pop()
+        bestID=bestID;
       }
-    }
+      m++;
   }
-  else{
-    mejorId=-1
   }
-  m=m-0.1
-}
-    
- 
+  
+  mejorId=bestID[0]
   return mejorId;
 }
 
@@ -151,9 +149,16 @@ cuandoPasa('limpiarRoster', () => {
 // ---- Zona de pruebas ----
 // Podés probar obtenerMejorJugador acá antes de arrancar el servidor.
 // Usá ids directamente o filtrá por posición ('G', 'F', 'C').
-let idsPrueba: number[] = ids; // COMPLETAR
-let mejorJugador: number = obtenerMejorJugador(idsPrueba, 'pts'); // COMPLETAR
-console.log(mejorJugador);
-// -------------------------
+
+
 
 iniciar();
+
+let idsPrueba: number[] = cargarJugadores(); // COMPLETAR
+let mejorJugador: number = obtenerMejorJugador(idsPrueba, 'pts'); 
+let mejorAsistidor: number= obtenerMejorJugador(idsPrueba, "ast")
+let mejorReboteador: number= obtenerMejorJugador(idsPrueba, "reb")
+// COMPLETAR
+console.log(mejorJugador);
+console.log(mejorAsistidor)
+console.log(mejorReboteador)
